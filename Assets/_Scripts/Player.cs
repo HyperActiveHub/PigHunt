@@ -7,24 +7,24 @@ public class Player : MonoBehaviour
 {
 	static Canvas indicatorCanvas;
 
-    public int id = -1;
+    public int Id = -1;
 
     private Vector2 moveInput;
     [SerializeField] private float moveSpeed;
 
 	[Header("Gun Stuff")]
 	[SerializeField, Min (0.1f)] float fireRate = 0.3f;
-	[SerializeField, Min (1)] public int ammoCount = 6;
-	[SerializeField, Min(1)] public float reloadSpeed = 5;
-	[SerializeField] GameObject IndicatorUIPrefab;
-	[SerializeField] GameObject IndicatorCanvasPrefab;
+	[SerializeField, Min (1)] public int AmmoCount = 6;
+	[SerializeField, Min(1)] public float ReloadSpeed = 5;
+	[SerializeField] GameObject indicatorUIPrefab;
+	[SerializeField] GameObject indicatorCanvasPrefab;
 
 	[HideInInspector]
-	public int ammo;
+	public int Ammo;
 	[HideInInspector]
-	public float fireRateTimer = 0;
+	public float FireRateTimer = 0;
 	[HideInInspector]
-	public float reloadTimer = 0;
+	public float ReloadTimer = 0;
 
 	private float leftBound = -8.5f;
     private float rightBound = 8.5f;
@@ -32,14 +32,14 @@ public class Player : MonoBehaviour
     private float lowerBound = -4.5f;
     private float nudgeDistance = 0.01f;
 
-	public bool isReloading;
+	public bool IsReloading;
 
 	private void Awake()
 	{
 		if(indicatorCanvas == null)
-			indicatorCanvas = Instantiate(IndicatorCanvasPrefab).GetComponent<Canvas>();
+			indicatorCanvas = Instantiate(indicatorCanvasPrefab).GetComponent<Canvas>();
 
-		var indicator = Instantiate(IndicatorUIPrefab, indicatorCanvas.transform);
+		var indicator = Instantiate(indicatorUIPrefab, indicatorCanvas.transform);
 		indicator.GetComponent<ShootIndicator>().crosshair = transform;
 	}
 
@@ -47,42 +47,42 @@ public class Player : MonoBehaviour
     {
         RandomizePosition();
 
-		ammo = ammoCount;
+		Ammo = AmmoCount;
 	}
 
     private void Update()
     {
-		if(fireRateTimer < fireRate)
-			fireRateTimer += Time.deltaTime;
+		if(FireRateTimer < fireRate)
+			FireRateTimer += Time.deltaTime;
 
-		if(reloadTimer < reloadSpeed)   //player can only shoot while "reloading"
+		if(ReloadTimer < ReloadSpeed)   //player can only shoot while "reloading"
 		{
-			reloadTimer += Time.deltaTime;
-			isReloading = true;
-			print("Reloading.. (shooting activated)");
+			ReloadTimer += Time.deltaTime;
+			IsReloading = true;
+			//print("Reloading.. (shooting activated)");
 			if(Input.GetKeyDown(KeyCode.Space)) //TODO: Use new input system
 			{
-				if(fireRateTimer >= fireRate)
+				if(FireRateTimer >= fireRate)
 				{
-					fireRateTimer = 0;
+					FireRateTimer = 0;
 					Shoot();
 				}
 			}
 		}
 		else
 		{
-			isReloading = false;
+			IsReloading = false;
 			if(Input.GetKeyDown(KeyCode.Space)) //TODO: Use new input system
 			{
-				if(fireRateTimer >= fireRate)
+				if(FireRateTimer >= fireRate)
 				{
-					fireRateTimer = 0;
-					print("Ammo: " + ammo);
-					ammo--;
-					if(ammo == 0)
+					FireRateTimer = 0;
+					//print("Ammo: " + ammo);
+					Ammo--;
+					if(Ammo == 0)
 					{
-						ammo = ammoCount;
-						reloadTimer = 0;
+						Ammo = AmmoCount;
+						ReloadTimer = 0;
 					}
 					//consume ammo, play empty "click" audio
 					//start "reloading" (enabling shooting) when ammo == 0
@@ -112,7 +112,7 @@ public class Player : MonoBehaviour
 
 	void Shoot()
 	{
-		print("shot");
+		//print("shot");
 		//only shoot if fireRateTimer >= fireRate
 
 		//raycast all
@@ -125,17 +125,27 @@ public class Player : MonoBehaviour
 		Vector3 origin = transform.position;
 		origin.z = -10;
 
+		//TODO: Use 2D physics..
+		
 		//3D physics!
+		//Maybe easier to just Raycast and check first hit?
 		RaycastHit[] hits = Physics.RaycastAll(origin, Vector3.forward, 20);
 		if(hits.Length > 0)
 		{
-			foreach(var hit in hits)
+			foreach(var hit in hits)	//make sure hits is in correct order, front to back. 
 			{
+				if(hit.collider.CompareTag("Background"))   //Background elements block shots.
+				{
+					//Missed()
+					break;
+				}
+
 				hit.collider.GetComponent<TargetBehaviour>()?.TargetHit(this);
 			}
 		}
 		else
 		{
+			//Missed()
 			//spawn bullet-hole at origin (origin.z needs to change)
 		}
 	}
@@ -143,7 +153,7 @@ public class Player : MonoBehaviour
     void OnMove(InputValue inputVal)
     {
         moveInput = inputVal.Get<Vector2>();
-        Debug.Log(moveInput);
+        //Debug.Log(moveInput);
     }
 
     public void RandomizePosition()

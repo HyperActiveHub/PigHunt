@@ -19,13 +19,13 @@ public class ShootIndicator : MonoBehaviour
 	void Update()
     {
 		transform.position = crosshair.position;
-		if(player.isReloading)
+		if(player.IsReloading)
 		{
-			image.fillAmount = player.reloadTimer / player.reloadSpeed;
+			image.fillAmount = player.ReloadTimer / player.ReloadSpeed;
 		}
 		else
 		{
-			image.fillAmount = (float)player.ammo / (float)player.ammoCount;
+			image.fillAmount = (float)player.Ammo / (float)player.AmmoCount;
 		}
     }
 }

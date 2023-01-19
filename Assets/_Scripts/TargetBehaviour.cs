@@ -5,14 +5,27 @@ using UnityEngine;
 public class TargetBehaviour : MonoBehaviour
 {
 	[SerializeField, Range(0.2f, 5f)] float animSpeedMultiplierMin = 0.5f;
-	[SerializeField, Range(0.2f, 5f)] float animSpeedMultiplierMax = 1.5f; 
+	[SerializeField, Range(0.2f, 5f)] float animSpeedMultiplierMax = 1.5f;
+
+	[SerializeField] GameObject deathParticlesPrefab;
 
 	Animator animator;
+	[HideInInspector]
+	public GameObject RenderParent;
 	List<AnimatorControllerParameter> parameters;
 	string animSpeedParamName;
-    void Start()
+	string spriteName;
+
+	private void Awake()
+	{
+		RenderParent = transform.GetChild(0).gameObject;
+		spriteName =  RenderParent.GetComponent<SpriteRenderer>().sprite.texture.name;
+	}
+
+	void Start()
     {
 		animator = GetComponent<Animator>();
+		
 		parameters = new List<AnimatorControllerParameter>(animator.parameters);
 
 		for(int i = 0; i < parameters.Count; i++)
@@ -43,14 +56,12 @@ public class TargetBehaviour : MonoBehaviour
 
 	public void TargetHit(Player player)
 	{
-		//KC: call score-system, was this target assigned to the player that hit?
-		//add points if player was assigned this target, or remove points if not
-		//Play Death-effect - confetti
-
+		//ScoreManager.Instance.OnScore(player.id, spriteName);
+		//print($"Player <{player.name}> hit target [{name}]!");
 
 		Destroy(gameObject);
-		//print($"Player <{player.name}> hit target [{name}]!");
+		var go = Instantiate(deathParticlesPrefab, transform.position, Quaternion.identity);
+		go.GetComponent<ParticleSystemRenderer>().sortingOrder = RenderParent.GetComponent<SpriteRenderer>().sortingOrder;
 	}
-
 
 }
