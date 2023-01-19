@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
 {
 	static Canvas indicatorCanvas;
 
+    public int id = -1;
+
     private Vector2 moveInput;
     [SerializeField] private float moveSpeed;
 
@@ -43,7 +45,6 @@ public class Player : MonoBehaviour
 
 	void Start()
     {
-		ammo = ammoCount;
         RandomizePosition();
 
 		
@@ -142,7 +143,7 @@ public class Player : MonoBehaviour
     void OnMove(InputValue inputVal)
     {
         moveInput = inputVal.Get<Vector2>();
-        //Debug.Log(moveInput);
+        Debug.Log(moveInput);
     }
 
     public void RandomizePosition()
@@ -150,13 +151,10 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(Random.Range(-8, 8), Random.Range(-4, 4), -5);
     }
 
-    public void SwapPosition(Player playerToSwapTo)
+    public void SwapPosition(Vector3 playerToSwapTo)
     {
         Vector3 oldPos = transform.position;
-        Vector3 oldPosSwapper = transform.position;
-
-        transform.position = oldPosSwapper;
-        playerToSwapTo.transform.position = oldPos;
+        transform.position = playerToSwapTo;
     }
 
 }
