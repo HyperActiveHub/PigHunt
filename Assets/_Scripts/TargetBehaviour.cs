@@ -5,17 +5,20 @@ using UnityEngine;
 public class TargetBehaviour : MonoBehaviour
 {
 	[SerializeField, Range(0.2f, 5f)] float animSpeedMultiplierMin = 0.5f;
-	[SerializeField, Range(0.2f, 5f)] float animSpeedMultiplierMax = 1.5f; 
+	[SerializeField, Range(0.2f, 5f)] float animSpeedMultiplierMax = 1.5f;
+
+	[SerializeField] GameObject deathParticlesPrefab;
 
 	Animator animator;
+	GameObject renderParent;
 	List<AnimatorControllerParameter> parameters;
 	string animSpeedParamName;
-
 	string spriteName;
     void Start()
     {
-		spriteName = GetComponent<SpriteRenderer>().sprite.texture.name;
 		animator = GetComponent<Animator>();
+		renderParent = transform.GetChild(0).gameObject;
+		spriteName =  renderParent.GetComponent<SpriteRenderer>().sprite.texture.name;
 		parameters = new List<AnimatorControllerParameter>(animator.parameters);
 
 		for(int i = 0; i < parameters.Count; i++)
@@ -46,14 +49,11 @@ public class TargetBehaviour : MonoBehaviour
 
 	public void TargetHit(Player player)
 	{
-		//KC: call score-system, was this target assigned to the player that hit?
-		//add points if player was assigned this target, or remove points if not
-		//Play Death-effect - confetti
-		ScoreManager.Instance.OnScore(player.id, spriteName);
+		//ScoreManager.Instance.OnScore(player.id, spriteName);
+		//print($"Player <{player.name}> hit target [{name}]!");
 
 		Destroy(gameObject);
-		//print($"Player <{player.name}> hit target [{name}]!");
+		Instantiate(deathParticlesPrefab, transform.position, Quaternion.identity);
 	}
-
 
 }
