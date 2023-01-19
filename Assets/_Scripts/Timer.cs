@@ -9,31 +9,50 @@ public class Timer : MonoBehaviour
 
     public int timeLeft = 10;
     public TextMeshProUGUI timerText;
-    private Player[] players;
+    private List<Player> players = new List<Player>();
+    private bool armed = true;
 
     // Use this for initialization    
     void Start()
     {
-        timeLeft = Random.Range(10, 20);
+        InitTimer();
+    }
+
+    void InitTimer()
+    {
+        timeLeft = Random.Range(25, 35);
         timerText.text = timeLeft.ToString();
         StartCoroutine(LoseTime());
-        players = FindObjectsOfType<Player>();
+        players.AddRange(FindObjectsOfType<Player>());
+        armed = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timeLeft <= 0)
+        Debug.Log("Time left" + timeLeft);
+        if (timeLeft <= 0 && armed)
         {
-            StopCoroutine(LoseTime());
-            timerText.text = "Time's up!";
-            foreach (Player p in players)
+            armed = false;
+            StopAllCoroutines();
+            //timerText.text = "Time's up!";
+
+            players.Clear();
+            players.AddRange(FindObjectsOfType<Player>());
+            Vector3 firstPlayer = players[0].transform.position;
+
+            for (int i = 0; i < players.Count; i++) 
             {
-                Player randomPlayer = players[Random.Range(0, players.Length - 1)];
+                if (i == players.Count - 1)
+                {
+                    players[i].SwapPosition(firstPlayer);
+                } else
+                {
+                    players[i].SwapPosition(players[i + 1].transform.position);
+                }
 
-                p.SwapPosition(randomPlayer);
             }
-
+            InitTimer();
         }
     }
 
