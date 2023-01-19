@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
 		{
 			reloadTimer += Time.deltaTime;
 			isReloading = true;
-			print("Reloading.. (shooting activated)");
+			//print("Reloading.. (shooting activated)");
 			if(Input.GetKeyDown(KeyCode.Space)) //TODO: Use new input system
 			{
 				if(fireRateTimer >= fireRate)
@@ -112,7 +112,7 @@ public class Player : MonoBehaviour
 
 	void Shoot()
 	{
-		print("shot");
+		//print("shot");
 		//only shoot if fireRateTimer >= fireRate
 
 		//raycast all

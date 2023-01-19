@@ -10,8 +10,11 @@ public class TargetBehaviour : MonoBehaviour
 	Animator animator;
 	List<AnimatorControllerParameter> parameters;
 	string animSpeedParamName;
+
+	string spriteName;
     void Start()
     {
+		spriteName = GetComponent<SpriteRenderer>().sprite.texture.name;
 		animator = GetComponent<Animator>();
 		parameters = new List<AnimatorControllerParameter>(animator.parameters);
 
@@ -46,7 +49,7 @@ public class TargetBehaviour : MonoBehaviour
 		//KC: call score-system, was this target assigned to the player that hit?
 		//add points if player was assigned this target, or remove points if not
 		//Play Death-effect - confetti
-
+		ScoreManager.Instance.OnScore(player.id, spriteName);
 
 		Destroy(gameObject);
 		//print($"Player <{player.name}> hit target [{name}]!");

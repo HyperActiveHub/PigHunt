@@ -5,6 +5,23 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
+	public static ScoreManager Instance
+	{
+		get
+		{
+			if(instance != null)
+				return instance;
+			else
+				return null;
+		}
+		set
+		{
+			if(instance == null)
+				instance = value;
+		}
+	}
+	static ScoreManager instance;
+
 
     public static int numberOfPlayers = 4;
 
@@ -19,8 +36,15 @@ public class ScoreManager : MonoBehaviour
 
     public string[] targetTypes;
 
-    // Start is called before the first frame update
-    void Start()
+	private void Awake()
+	{
+		if(instance != null)
+			Destroy(gameObject);
+		else
+			instance = this;
+	}
+
+	void Start()
     {
 
         playerInfo = new GameObject[4] { textFieldPlayerOne, textFieldPlayerTwo, textFieldPlayerThree, textFieldPlayerFour };
@@ -38,10 +62,12 @@ public class ScoreManager : MonoBehaviour
 
     public void OnScore(int playerID, string targetName)
     {
-        if (CheckIfRightTarget(targetName))
-        {
-            playerScores[playerID] += 1;
-        }
+		if(CheckIfRightTarget(targetName))
+		{
+			playerScores[playerID] += 10;
+		}
+		else
+			playerScores[playerID] -= 8;
 
         UpdateTextFields();
     }
