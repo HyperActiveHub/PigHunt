@@ -46,6 +46,13 @@ public class ScoreManager : MonoBehaviour
 
 	void Start()
     {
+		//TODO Winning Screen
+		//End game after X timer endings/rounds
+		//The player with the most score wins
+		//if 2 or more players have same score, let the player who first shot their target win, i.e
+		//save Time.time of last time player shot their target.  
+		//In end screen, hide all other players' crosshairs, only show winner so they can move around and see it's them. 
+		//Also display winning text: "Player X wins!"
 
         playerInfo = new GameObject[4] { textFieldPlayerOne, textFieldPlayerTwo, textFieldPlayerThree, textFieldPlayerFour };
 
