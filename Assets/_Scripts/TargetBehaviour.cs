@@ -10,15 +10,22 @@ public class TargetBehaviour : MonoBehaviour
 	[SerializeField] GameObject deathParticlesPrefab;
 
 	Animator animator;
-	GameObject renderParent;
+	[HideInInspector]
+	public GameObject RenderParent;
 	List<AnimatorControllerParameter> parameters;
 	string animSpeedParamName;
 	string spriteName;
-    void Start()
+
+	private void Awake()
+	{
+		RenderParent = transform.GetChild(0).gameObject;
+		spriteName =  RenderParent.GetComponent<SpriteRenderer>().sprite.texture.name;
+	}
+
+	void Start()
     {
 		animator = GetComponent<Animator>();
-		renderParent = transform.GetChild(0).gameObject;
-		spriteName =  renderParent.GetComponent<SpriteRenderer>().sprite.texture.name;
+		
 		parameters = new List<AnimatorControllerParameter>(animator.parameters);
 
 		for(int i = 0; i < parameters.Count; i++)
@@ -53,7 +60,8 @@ public class TargetBehaviour : MonoBehaviour
 		//print($"Player <{player.name}> hit target [{name}]!");
 
 		Destroy(gameObject);
-		Instantiate(deathParticlesPrefab, transform.position, Quaternion.identity);
+		var go = Instantiate(deathParticlesPrefab, transform.position, Quaternion.identity);
+		go.GetComponent<ParticleSystemRenderer>().sortingOrder = RenderParent.GetComponent<SpriteRenderer>().sortingOrder;
 	}
 
 }

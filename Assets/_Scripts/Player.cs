@@ -125,17 +125,27 @@ public class Player : MonoBehaviour
 		Vector3 origin = transform.position;
 		origin.z = -10;
 
+		//TODO: Use 2D physics..
+		
 		//3D physics!
+		//Maybe easier to just Raycast and check first hit?
 		RaycastHit[] hits = Physics.RaycastAll(origin, Vector3.forward, 20);
 		if(hits.Length > 0)
 		{
-			foreach(var hit in hits)
+			foreach(var hit in hits)	//make sure hits is in correct order, front to back. 
 			{
+				if(hit.collider.CompareTag("Background"))   //Background elements block shots.
+				{
+					//Missed()
+					break;
+				}
+
 				hit.collider.GetComponent<TargetBehaviour>()?.TargetHit(this);
 			}
 		}
 		else
 		{
+			//Missed()
 			//spawn bullet-hole at origin (origin.z needs to change)
 		}
 	}
