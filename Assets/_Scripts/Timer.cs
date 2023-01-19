@@ -9,6 +9,7 @@ public class Timer : MonoBehaviour
 
     public int timeLeft = 10;
     public TextMeshProUGUI timerText;
+    private Player[] players;
 
     // Use this for initialization    
     void Start()
@@ -16,6 +17,7 @@ public class Timer : MonoBehaviour
         timeLeft = Random.Range(10, 20);
         timerText.text = timeLeft.ToString();
         StartCoroutine(LoseTime());
+        players = FindObjectsOfType<Player>();
     }
 
     // Update is called once per frame
@@ -25,6 +27,13 @@ public class Timer : MonoBehaviour
         {
             StopCoroutine(LoseTime());
             timerText.text = "Time's up!";
+            foreach (Player p in players)
+            {
+                Player randomPlayer = players[Random.Range(0, players.Length - 1)];
+
+                p.SwapPosition(randomPlayer);
+            }
+
         }
     }
 

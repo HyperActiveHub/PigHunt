@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        
+        RandomizePosition();
     }
 
     private void Update()
@@ -45,6 +45,20 @@ public class Player : MonoBehaviour
     {
         moveInput = inputVal.Get<Vector2>();
         Debug.Log(moveInput);
+    }
+
+    public void RandomizePosition()
+    {
+        transform.position = new Vector3(Random.Range(-8, 8), Random.Range(-4, 4), 0);
+    }
+
+    public void SwapPosition(Player playerToSwapTo)
+    {
+        Vector3 oldPos = transform.position;
+        Vector3 oldPosSwapper = transform.position;
+
+        transform.position = oldPosSwapper;
+        playerToSwapTo.transform.position = oldPos;
     }
 
 }
