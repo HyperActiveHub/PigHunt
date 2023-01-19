@@ -48,5 +48,11 @@ MonoBehaviour:
   textFieldPlayerTwo: {fileID: 0}
   textFieldPlayerThree: {fileID: 0}
   textFieldPlayerFour: {fileID: 0}
-  targetTypes:
-  - SolidDuck
+  targetSprites:
+  - {fileID: 21300000, guid: a2ea607d95388fd429c70084f22e605e, type: 3}
+  - {fileID: 21300000, guid: b4bd8c7b7623a564d954f66a3ca703cc, type: 3}
+  - {fileID: 21300000, guid: a0cafb081e259114ea4e93d5ca519989, type: 3}
+  - {fileID: 21300000, guid: d268790d5cc8deb4ea484974fc1c0bb6, type: 3}
+  - {fileID: -1891630191, guid: cc6956185cae5a848a48022a1379e342, type: 3}
+  - {fileID: 21300000, guid: e3fb454a0fb68b9439e97d7b88e77b5e, type: 3}
+  activeTargets: []

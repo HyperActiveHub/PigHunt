@@ -73,7 +73,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 126.4, y: 0}
+  m_AnchoredPosition: {x: 1.6, y: 30.6}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7458368329853906761
@@ -187,11 +187,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3744080022819852834, guid: 51dba36064ff92a4bad690ba34f75f3a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3744080022819852834, guid: 51dba36064ff92a4bad690ba34f75f3a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 12.1
       objectReference: {fileID: 0}
     - target: {fileID: 3744080022819852834, guid: 51dba36064ff92a4bad690ba34f75f3a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -210,12 +210,8 @@ PrefabInstance:
       value: TextPlayerScore
       objectReference: {fileID: 0}
     - target: {fileID: 3744080022819852837, guid: 51dba36064ff92a4bad690ba34f75f3a, type: 3}
-      propertyPath: m_margin.x
-      value: -24.86058
-      objectReference: {fileID: 0}
-    - target: {fileID: 3744080022819852837, guid: 51dba36064ff92a4bad690ba34f75f3a, type: 3}
-      propertyPath: m_margin.z
-      value: -0.3335724
+      propertyPath: m_margin.y
+      value: 38.1341
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51dba36064ff92a4bad690ba34f75f3a, type: 3}

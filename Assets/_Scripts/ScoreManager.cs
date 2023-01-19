@@ -25,13 +25,19 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        activeTargets = new string[4];
         playerInfo = new GameObject[4] { textFieldPlayerOne, textFieldPlayerTwo, textFieldPlayerThree, textFieldPlayerFour };
 
-
+        SetRandomSprites();
 
         UpdateTextFields();
         UpdateTargetImages();
+    }
+
+    private void Update()
+    {
+
+        //UpdateTargetImages();
     }
 
     void UpdateTargetImages()
@@ -92,5 +98,12 @@ public class ScoreManager : MonoBehaviour
         return null;
     }
 
+    public void SetRandomSprites()
+    {
+        for (int i = 0; i < numberOfPlayers; i++)
+        {
+            activeTargets[i] = targetSprites[Random.Range(0, targetSprites.Length)].name;
+        }
+    }
 
 }
