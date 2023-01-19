@@ -10,12 +10,12 @@ public class ScoreManager : MonoBehaviour
 
     private int[] playerScores = new int[4];
 
-    public TextMeshProUGUI textFieldPlayerOne;
-    public TextMeshProUGUI textFieldPlayerTwo;
-    public TextMeshProUGUI textFieldPlayerThree;
-    public TextMeshProUGUI textFieldPlayerFour;
+    public GameObject textFieldPlayerOne;
+    public GameObject textFieldPlayerTwo;
+    public GameObject textFieldPlayerThree;
+    public GameObject textFieldPlayerFour;
 
-    private TextMeshProUGUI[] textFields;
+    private GameObject[] playerInfo;
 
     public string[] targetTypes;
 
@@ -23,16 +23,16 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
 
-        textFields = new TextMeshProUGUI[4] { textFieldPlayerOne, textFieldPlayerTwo, textFieldPlayerThree, textFieldPlayerFour };
+        playerInfo = new GameObject[4] { textFieldPlayerOne, textFieldPlayerTwo, textFieldPlayerThree, textFieldPlayerFour };
 
         UpdateTextFields();
     }
 
     void UpdateTextFields()
     {
-        for (int i = 0; i < textFields.Length; i++)
+        for (int i = 0; i < numberOfPlayers; i++)
         {
-            textFields[i].text = "Player " + (i + 1) + ": " + playerScores[i];
+            playerInfo[i].GetComponentInChildren<TextMeshProUGUI>().text = "Player " + (i + 1) + ": " + playerScores[i];
         }
     }
 
