@@ -441,6 +441,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5101964012688720382, guid: a65c57d4c4854bb47a1913feda31084e, type: 3}
+      propertyPath: numberOfPlayers
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5101964012688720382, guid: a65c57d4c4854bb47a1913feda31084e, type: 3}
       propertyPath: textFieldPlayerOne
       value: 
       objectReference: {fileID: 791435822}

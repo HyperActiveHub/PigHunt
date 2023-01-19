@@ -24,7 +24,8 @@ public class ScoreManager : MonoBehaviour
 	static ScoreManager instance;
 
 
-    public static int numberOfPlayers = 4;
+    public int numberOfPlayers = 4;
+    private int maxPlayers = 4;
 
     private int[] playerScores;
 
@@ -53,6 +54,12 @@ public class ScoreManager : MonoBehaviour
 
         activeTargets = new string[numberOfPlayers];
         playerInfo = new GameObject[4] { textFieldPlayerOne, textFieldPlayerTwo, textFieldPlayerThree, textFieldPlayerFour };
+
+        // Deactivate not used players
+        for (int i = numberOfPlayers; i < maxPlayers; i++)
+        {
+            playerInfo[i].SetActive(false);
+        }
 
         SetRandomSprites();
 
