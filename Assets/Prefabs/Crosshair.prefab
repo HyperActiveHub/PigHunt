@@ -129,3 +129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  fireRate: 0.3
+  ammoCount: 6
+  reloadSpeed: 5
+  IndicatorUIPrefab: {fileID: 3679786170632378224, guid: e41071452a98fc443b35835766516326, type: 3}
+  IndicatorCanvasPrefab: {fileID: 6060353812740893896, guid: e9a627c8fbdda974aa00b84d4777336b, type: 3}
