@@ -18,10 +18,10 @@ public class Timer : MonoBehaviour
         InitTimer();
     }
 
-    void InitTimer()
+    public void InitTimer()
     {
         timeLeft = Random.Range(25, 35);
-        timerText.text = timeLeft.ToString();
+        timerText.text = "Randomize in: " + timeLeft.ToString();
         StartCoroutine(LoseTime());
         players.AddRange(FindObjectsOfType<Player>());
         armed = true;
@@ -38,6 +38,8 @@ public class Timer : MonoBehaviour
 
             players.Clear();
             players.AddRange(FindObjectsOfType<Player>());
+
+
             Vector3 firstPlayer = players[0].transform.position;
 
             for (int i = 0; i < players.Count; i++) 
@@ -51,6 +53,9 @@ public class Timer : MonoBehaviour
                 }
 
             }
+
+            ScoreManager.Instance.SetRandomSprites();
+
             InitTimer();
         }
     }
@@ -59,9 +64,26 @@ public class Timer : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1);
+            
+
+            if (Random.Range(0f, 1f) < 0.1)
+            {
+                yield return new WaitForSeconds(0.5f);
+            } else
+            {
+                yield return new WaitForSeconds(1);
+            }
+
+            if (timeLeft <= 3 && Random.Range(0f, 1f) < 0.3f)
+            {
+                timeLeft = 0;
+                timerText.text = "Randomize in: 0";
+                StopAllCoroutines();
+            }
+
+
             timeLeft--;
-            timerText.text = timeLeft.ToString();
+            timerText.text = "Randomize in: " + timeLeft;
         }
     }
 }

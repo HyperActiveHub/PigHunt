@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -23,9 +24,10 @@ public class ScoreManager : MonoBehaviour
 	static ScoreManager instance;
 
 
-    public static int numberOfPlayers = 4;
+    public int numberOfPlayers = 4;
+    private int maxPlayers = 4;
 
-    private int[] playerScores = new int[4];
+    private int[] playerScores;
 
     public GameObject textFieldPlayerOne;
     public GameObject textFieldPlayerTwo;
@@ -34,7 +36,9 @@ public class ScoreManager : MonoBehaviour
 
     private GameObject[] playerInfo;
 
-    public string[] targetTypes;
+    public Sprite[] targetSprites;
+
+    public string[] activeTargets;
 
 	private void Awake()
 	{
@@ -53,10 +57,28 @@ public class ScoreManager : MonoBehaviour
 		//save Time.time of last time player shot their target.  
 		//In end screen, hide all other players' crosshairs, only show winner so they can move around and see it's them. 
 		//Also display winning text: "Player X wins!"
+        playerScores = new int[numberOfPlayers];
 
+        activeTargets = new string[numberOfPlayers];
         playerInfo = new GameObject[4] { textFieldPlayerOne, textFieldPlayerTwo, textFieldPlayerThree, textFieldPlayerFour };
 
+        // Deactivate not used players
+        for (int i = numberOfPlayers; i < maxPlayers; i++)
+        {
+            playerInfo[i].SetActive(false);
+        }
+
+        SetRandomSprites();
+
         UpdateTextFields();
+    }
+
+    void UpdateTargetImages()
+    {
+        for (int i = 0; i < numberOfPlayers; i++)
+        {
+            playerInfo[i].GetComponentInChildren<Image>().sprite = FindSpriteByName(activeTargets[i]);
+        }
     }
 
     void UpdateTextFields()
@@ -81,7 +103,7 @@ public class ScoreManager : MonoBehaviour
 
     private bool CheckIfRightTarget(string targetName)
     {
-        foreach (string targetType in targetTypes)
+        foreach (string targetType in GetAllSpriteNames())
         {
             if (targetName.Contains(targetType)) return true;
         }
@@ -89,5 +111,36 @@ public class ScoreManager : MonoBehaviour
         return false;
     }
 
+    private string[] GetAllSpriteNames()
+    {
+        string[] names = new string[targetSprites.Length];
+        int index = 0;
+
+        foreach (Sprite sprite in targetSprites)
+        {
+            names[index] = sprite.name;
+        }
+
+        return names;
+    }
+
+    private Sprite FindSpriteByName(string name)
+    {
+        foreach (Sprite sprite in targetSprites)
+        {
+            if (name == sprite.name) return sprite;
+        }
+        return null;
+    }
+
+    public void SetRandomSprites()
+    {
+        for (int i = 0; i < numberOfPlayers; i++)
+        {
+            activeTargets[i] = targetSprites[Random.Range(0, targetSprites.Length)].name;
+        }
+
+        UpdateTargetImages();
+    }
 
 }
