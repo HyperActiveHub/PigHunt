@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
     {
         RandomizePosition();
 
-		
+		ammo = ammoCount;
 	}
 
     private void Update()
