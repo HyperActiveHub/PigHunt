@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public int id = -1;
+
     private Vector2 moveInput;
     [SerializeField] private float moveSpeed;
 
@@ -16,6 +18,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        id = GetComponent<PlayerInput>().playerIndex;
         RandomizePosition();
     }
 
@@ -44,7 +47,6 @@ public class Player : MonoBehaviour
     void OnMove(InputValue inputVal)
     {
         moveInput = inputVal.Get<Vector2>();
-        //Debug.Log(moveInput);
     }
 
     public void RandomizePosition()
@@ -55,9 +57,6 @@ public class Player : MonoBehaviour
     public void SwapPosition(Vector3 playerToSwapTo)
     {
         Vector3 oldPos = transform.position;
-        //Vector3 oldPosSwapper = transform.position;
-
-        //transform.position = oldPosSwapper;
         transform.position = playerToSwapTo;
     }
 
