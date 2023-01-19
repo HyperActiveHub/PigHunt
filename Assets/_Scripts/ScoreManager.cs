@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -17,7 +18,9 @@ public class ScoreManager : MonoBehaviour
 
     private GameObject[] playerInfo;
 
-    public string[] targetTypes;
+    public Sprite[] targetSprites;
+
+    public string[] activeTargets;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +28,18 @@ public class ScoreManager : MonoBehaviour
 
         playerInfo = new GameObject[4] { textFieldPlayerOne, textFieldPlayerTwo, textFieldPlayerThree, textFieldPlayerFour };
 
+
+
         UpdateTextFields();
+        UpdateTargetImages();
+    }
+
+    void UpdateTargetImages()
+    {
+        for (int i = 0; i < numberOfPlayers; i++)
+        {
+            playerInfo[i].GetComponentInChildren<Image>().sprite = FindSpriteByName(activeTargets[i]);
+        }
     }
 
     void UpdateTextFields()
@@ -48,12 +62,34 @@ public class ScoreManager : MonoBehaviour
 
     private bool CheckIfRightTarget(string targetName)
     {
-        foreach (string targetType in targetTypes)
+        foreach (string targetType in GetAllSpriteNames())
         {
             if (targetName.Contains(targetType)) return true;
         }
 
         return false;
+    }
+
+    private string[] GetAllSpriteNames()
+    {
+        string[] names = new string[targetSprites.Length];
+        int index = 0;
+
+        foreach (Sprite sprite in targetSprites)
+        {
+            names[index] = sprite.name;
+        }
+
+        return names;
+    }
+
+    private Sprite FindSpriteByName(string name)
+    {
+        foreach (Sprite sprite in targetSprites)
+        {
+            if (name == sprite.name) return sprite;
+        }
+        return null;
     }
 
 
