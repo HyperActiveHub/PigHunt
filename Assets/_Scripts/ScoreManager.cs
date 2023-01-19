@@ -26,7 +26,7 @@ public class ScoreManager : MonoBehaviour
 
     public static int numberOfPlayers = 4;
 
-    private int[] playerScores = new int[4];
+    private int[] playerScores;
 
     public GameObject textFieldPlayerOne;
     public GameObject textFieldPlayerTwo;
@@ -49,19 +49,14 @@ public class ScoreManager : MonoBehaviour
 
 	void Start()
     {
-        activeTargets = new string[4];
+        playerScores = new int[numberOfPlayers];
+
+        activeTargets = new string[numberOfPlayers];
         playerInfo = new GameObject[4] { textFieldPlayerOne, textFieldPlayerTwo, textFieldPlayerThree, textFieldPlayerFour };
 
         SetRandomSprites();
 
         UpdateTextFields();
-        UpdateTargetImages();
-    }
-
-    private void Update()
-    {
-
-        //UpdateTargetImages();
     }
 
     void UpdateTargetImages()
@@ -130,6 +125,8 @@ public class ScoreManager : MonoBehaviour
         {
             activeTargets[i] = targetSprites[Random.Range(0, targetSprites.Length)].name;
         }
+
+        UpdateTargetImages();
     }
 
 }

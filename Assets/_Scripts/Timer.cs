@@ -38,6 +38,8 @@ public class Timer : MonoBehaviour
 
             players.Clear();
             players.AddRange(FindObjectsOfType<Player>());
+
+
             Vector3 firstPlayer = players[0].transform.position;
 
             for (int i = 0; i < players.Count; i++) 
@@ -51,6 +53,9 @@ public class Timer : MonoBehaviour
                 }
 
             }
+
+            ScoreManager.Instance.SetRandomSprites();
+
             InitTimer();
         }
     }
