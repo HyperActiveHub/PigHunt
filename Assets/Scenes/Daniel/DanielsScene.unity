@@ -291,17 +291,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3221534139881295152, guid: 854f47966adc8e84ca57f89ae364d554, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1280398885}
     - target: {fileID: 3221534139881295156, guid: 854f47966adc8e84ca57f89ae364d554, type: 3}
       propertyPath: m_Name
       value: PlayerScoreCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 3221534139881295167, guid: 854f47966adc8e84ca57f89ae364d554, type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3221534139881295167, guid: 854f47966adc8e84ca57f89ae364d554, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3221534139881295167, guid: 854f47966adc8e84ca57f89ae364d554, type: 3}
       propertyPath: m_RootOrder
@@ -325,11 +329,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3221534139881295167, guid: 854f47966adc8e84ca57f89ae364d554, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 880.39996
       objectReference: {fileID: 0}
     - target: {fileID: 3221534139881295167, guid: 854f47966adc8e84ca57f89ae364d554, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 495
       objectReference: {fileID: 0}
     - target: {fileID: 3221534139881295167, guid: 854f47966adc8e84ca57f89ae364d554, type: 3}
       propertyPath: m_LocalPosition.x
@@ -341,7 +345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3221534139881295167, guid: 854f47966adc8e84ca57f89ae364d554, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 3221534139881295167, guid: 854f47966adc8e84ca57f89ae364d554, type: 3}
       propertyPath: m_LocalRotation.w
@@ -379,23 +383,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8522230434170016944, guid: 854f47966adc8e84ca57f89ae364d554, type: 3}
-      propertyPath: timerTextField
-      value: 
-      objectReference: {fileID: 3221534139250283832}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 854f47966adc8e84ca57f89ae364d554, type: 3}
---- !u!114 &3221534139250283832 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6104005758985300701, guid: 854f47966adc8e84ca57f89ae364d554, type: 3}
-  m_PrefabInstance: {fileID: 3221534139250283831}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &4285704521095176742
 PrefabInstance:
   m_ObjectHideFlags: 0
