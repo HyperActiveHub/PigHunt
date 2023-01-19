@@ -5,33 +5,24 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    public int port = -1;
-    public GameObject characterPrefab;
-    private GameObject characterInstance;
-    private PlayerInput input;
+    private Vector2 moveInput;
+    [SerializeField] private float moveSpeed; 
+    
 
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
-        input = GetComponent<PlayerInput>();
-        port = input.playerIndex;
-        // TODO: Initialize elsewhere
-        BuildCharacter();
+        
     }
-    public GameObject BuildCharacter()
+
+    private void Update()
     {
-        var charObject = Instantiate(characterPrefab);
-        characterInstance = charObject;
-        return charObject;
+        transform.position += (new Vector3(moveInput.x, moveInput.y, 0)) * moveSpeed * Time.deltaTime;
     }
-    private string DeviceString()
+
+    void OnMove(InputValue inputVal)
     {
-        var str = "[";
-        foreach (var device in input.devices)
-        {
-            str += device.displayName + ", ";
-        }
-        str += "]";
-        return str;
+        moveInput = inputVal.Get<Vector2>();
+        Debug.Log(moveInput);
     }
+
 }
