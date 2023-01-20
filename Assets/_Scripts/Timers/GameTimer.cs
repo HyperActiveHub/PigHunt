@@ -10,23 +10,23 @@ public class GameTimer : MonoBehaviour
     public TextMeshProUGUI timerTextField;
     public string text = "Time left: ";
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        InitTimer();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void InitTimer()
     {
         timeLeft = startTime + Random.Range(1, 15);
         timerTextField.text = text + timeLeft.ToString();
         StartCoroutine(Timer());
+    }
+
+    private void EndTimer()
+    {
+        timeLeft = 0;
+        timerTextField.text = text + "0";
+        StopAllCoroutines();
+    }
+
+    private void Update()
+    {
+        if (timeLeft == 0) EndTimer();
     }
 
     IEnumerator Timer()
@@ -46,9 +46,7 @@ public class GameTimer : MonoBehaviour
 
             if (timeLeft <= 3 && Random.Range(0f, 1f) < 0.3f)
             {
-                timeLeft = 0;
-                timerTextField.text = text + "0";
-                StopAllCoroutines();
+                EndTimer();
             }
 
 

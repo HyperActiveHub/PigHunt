@@ -104,8 +104,9 @@ public class ScoreManager : MonoBehaviour
                 waitingText.text = "Waiting for " + (maxPlayers - connectedPlayers) + " players";
             } else
             {
-                waitingText.enabled = false;
+                //waitingText.enabled = false;
                 waitingForPlayers = false;
+                GetComponent<StartTimer>().InitTimer();
             }
         }
         

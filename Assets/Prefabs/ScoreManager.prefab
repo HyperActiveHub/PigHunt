@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4285704520588270589}
   - component: {fileID: 5101964012688720382}
+  - component: {fileID: 6525195647568484918}
   m_Layer: 0
   m_Name: ScoreManager
   m_TagString: Untagged
@@ -44,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23104c7b394c71a43856096c38be1e1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  connectedPlayers: 2
+  maxPlayers: 2
   textFieldPlayerOne: {fileID: 0}
   textFieldPlayerTwo: {fileID: 0}
   textFieldPlayerThree: {fileID: 0}
@@ -56,3 +59,19 @@ MonoBehaviour:
   - {fileID: -1891630191, guid: cc6956185cae5a848a48022a1379e342, type: 3}
   - {fileID: 21300000, guid: e3fb454a0fb68b9439e97d7b88e77b5e, type: 3}
   activeTargets: []
+  waitingText: {fileID: 0}
+--- !u!114 &6525195647568484918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4285704520588270588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fd5efc6c0ce9744a2940e8888295a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startTime: 5
+  timerTextField: {fileID: 0}
+  text: 

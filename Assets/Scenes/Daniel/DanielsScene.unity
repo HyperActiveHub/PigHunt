@@ -520,21 +520,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5101964012688720382, guid: a65c57d4c4854bb47a1913feda31084e, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5101964012688720382, guid: a65c57d4c4854bb47a1913feda31084e, type: 3}
-      propertyPath: maxPlayers
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5101964012688720382, guid: a65c57d4c4854bb47a1913feda31084e, type: 3}
       propertyPath: waitingText
       value: 
       objectReference: {fileID: 3221534139250283832}
-    - target: {fileID: 5101964012688720382, guid: a65c57d4c4854bb47a1913feda31084e, type: 3}
-      propertyPath: numberOfPlayers
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5101964012688720382, guid: a65c57d4c4854bb47a1913feda31084e, type: 3}
       propertyPath: textFieldPlayerOne
       value: 
@@ -551,5 +539,9 @@ PrefabInstance:
       propertyPath: textFieldPlayerThree
       value: 
       objectReference: {fileID: 789935158}
+    - target: {fileID: 6525195647568484918, guid: a65c57d4c4854bb47a1913feda31084e, type: 3}
+      propertyPath: timerTextField
+      value: 
+      objectReference: {fileID: 3221534139250283832}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a65c57d4c4854bb47a1913feda31084e, type: 3}

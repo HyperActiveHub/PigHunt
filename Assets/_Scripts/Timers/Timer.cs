@@ -12,12 +12,6 @@ public class Timer : MonoBehaviour
     private List<Player> players = new List<Player>();
     private bool armed = true;
 
-    // Use this for initialization    
-    void Start()
-    {
-        InitTimer();
-    }
-
     public void InitTimer()
     {
         timeLeft = Random.Range(25, 35);
