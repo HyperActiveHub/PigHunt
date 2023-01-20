@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using static System.Net.Mime.MediaTypeNames;
 
 public class ImageFade : MonoBehaviour
 {
