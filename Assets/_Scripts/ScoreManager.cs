@@ -59,28 +59,37 @@ public class ScoreManager : MonoBehaviour
 
 	void Start()
     {
-		//TODO Winning Screen
-		//End game after X timer endings/rounds
-		//The player with the most score wins
-		//if 2 or more players have same score, let the player who first shot their target win, i.e
-		//save Time.time of last time player shot their target.  
-		//In end screen, hide all other players' crosshairs, only show winner so they can move around and see it's them. 
-		//Also display winning text: "Player X wins!"
-        playerScores = new int[maxPlayers];
-        lastTimePlayerHitTarget = new float[4] { Time.time, Time.time, Time.time, Time.time };
-
-        activeTargets = new string[maxPlayers];
-        playerInfo = new GameObject[4] { textFieldPlayerOne, textFieldPlayerTwo, textFieldPlayerThree, textFieldPlayerFour };
-
         playerInpMgr = FindObjectOfType<PlayerInputManager>();
 
-        winningCanvas.SetActive(false);
+
+        playerInfo = new GameObject[4] { textFieldPlayerOne, textFieldPlayerTwo, textFieldPlayerThree, textFieldPlayerFour };
 
         // Deactivate not used players
         for (int i = GetConnectedPlayers(); i < maxPlayers; i++)
         {
             playerInfo[i].SetActive(false);
         }
+    }
+
+    public void StartGame()
+    {
+        //TODO Winning Screen
+        //End game after X timer endings/rounds
+        //The player with the most score wins
+        //if 2 or more players have same score, let the player who first shot their target win, i.e
+        //save Time.time of last time player shot their target.  
+        //In end screen, hide all other players' crosshairs, only show winner so they can move around and see it's them. 
+        //Also display winning text: "Player X wins!"
+        playerScores = new int[maxPlayers];
+        lastTimePlayerHitTarget = new float[4] { Time.time, Time.time, Time.time, Time.time };
+
+        activeTargets = new string[maxPlayers];
+
+        
+
+        winningCanvas.SetActive(false);
+
+        
 
         SetRandomSprites();
 
@@ -265,4 +274,8 @@ public class ScoreManager : MonoBehaviour
         return playerInpMgr.playerCount;
     }
 
+    public void SetMaxPlayers(int maxPlayers)
+    {
+        this.maxPlayers = maxPlayers;
+    }
 }
