@@ -285,6 +285,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5101964012688720382, guid: a65c57d4c4854bb47a1913feda31084e, type: 3}
+      propertyPath: maxPlayers
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5101964012688720382, guid: a65c57d4c4854bb47a1913feda31084e, type: 3}
       propertyPath: waitingText
       value: 
       objectReference: {fileID: 815760105}
@@ -292,6 +296,10 @@ PrefabInstance:
       propertyPath: winningCanvas
       value: 
       objectReference: {fileID: 751169818}
+    - target: {fileID: 5101964012688720382, guid: a65c57d4c4854bb47a1913feda31084e, type: 3}
+      propertyPath: connectedPlayers
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5101964012688720382, guid: a65c57d4c4854bb47a1913feda31084e, type: 3}
       propertyPath: textFieldPlayerOne
       value: 
@@ -332,6 +340,10 @@ PrefabInstance:
       propertyPath: targetSprites.Array.data[4]
       value: 
       objectReference: {fileID: 21300000, guid: e3fb454a0fb68b9439e97d7b88e77b5e, type: 3}
+    - target: {fileID: 6525195647568484918, guid: a65c57d4c4854bb47a1913feda31084e, type: 3}
+      propertyPath: timerTextField
+      value: 
+      objectReference: {fileID: 1837996093}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a65c57d4c4854bb47a1913feda31084e, type: 3}
 --- !u!1001 &699305857
@@ -593,6 +605,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 854f47966adc8e84ca57f89ae364d554, type: 3}
+--- !u!114 &1837996093 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3221534138575239671, guid: 854f47966adc8e84ca57f89ae364d554, type: 3}
+  m_PrefabInstance: {fileID: 1757737007}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1850442894
 PrefabInstance:
   m_ObjectHideFlags: 0

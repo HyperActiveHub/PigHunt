@@ -18,7 +18,9 @@ public class SwitchWorld : MonoBehaviour
 			GetComponent<Animator>().SetTrigger("Switch");
 		}
 		else if(startTime != float.MaxValue)
-			print("Switching world in " + ((startTime + switchAfterSeconds) - Time.timeSinceLevelLoad).ToString("N") + " seconds.".ToString());
+		{
+			//print("Switching world in " + ((startTime + switchAfterSeconds) - Time.timeSinceLevelLoad).ToString("N") + " seconds.".ToString());
+		}
         
     }
 }
