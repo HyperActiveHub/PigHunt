@@ -65,7 +65,8 @@ public class GameTimer : MonoBehaviour
             }
 
 
-            timeLeft--;
+            if (timeLeft > 0)
+                timeLeft--;
             timerTextField.text = text + timeLeft;
         }
     }

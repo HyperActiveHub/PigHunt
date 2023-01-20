@@ -87,7 +87,8 @@ public class Timer : MonoBehaviour
             }
 
 
-            timeLeft--;
+            if (timeLeft > 0)
+                timeLeft--;
             timerText.text = "Randomize in: " + timeLeft;
         }
     }
