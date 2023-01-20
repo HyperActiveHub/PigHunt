@@ -22,6 +22,7 @@ public class GameTimer : MonoBehaviour
         timeLeft = 0;
         timerTextField.text = text + "0";
         StopAllCoroutines();
+        FindObjectOfType<Timer>().EndTime();
         ScoreManager.Instance.EndGame();
     }
 

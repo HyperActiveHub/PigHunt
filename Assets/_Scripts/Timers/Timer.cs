@@ -33,8 +33,13 @@ public class Timer : MonoBehaviour
             players.Clear();
             players.AddRange(FindObjectsOfType<Player>());
 
+            Vector3 firstPlayer = new Vector3(0,0,0);
 
-            Vector3 firstPlayer = players[0].transform.position;
+            if (players.Count > 0)
+            {
+                firstPlayer = players[0].transform.position;
+            }
+            
 
             for (int i = 0; i < players.Count; i++) 
             {
@@ -52,6 +57,12 @@ public class Timer : MonoBehaviour
 
             InitTimer();
         }
+    }
+
+    public void EndTime()
+    {
+        StopAllCoroutines();
+        timeLeft = 0;
     }
 
     IEnumerator LoseTime()
