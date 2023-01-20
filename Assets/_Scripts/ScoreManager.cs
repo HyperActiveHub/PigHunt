@@ -175,10 +175,10 @@ public class ScoreManager : MonoBehaviour
     private void SetWinner()
     {
         int highestScoreIndex = 0;
-        int highestScore = 0;
+        int highestScore = -10000;
 
         int secondHighestScoreIndex = 0;
-        int secondHighestScore = 0;
+        int secondHighestScore = -10000;
         for (int i = 0; i < playerScores.Length; i++)
         {
             int score = playerScores[i];
@@ -218,7 +218,10 @@ public class ScoreManager : MonoBehaviour
         {
             if (allCrosshairs[i].Id != winnerID)
             {
-                allCrosshairs[i].gameObject.SetActive(false);
+                allCrosshairs[i].enabled = false;
+            } else
+            {
+                allCrosshairs[i].enabled = true;
             }
         }
     }

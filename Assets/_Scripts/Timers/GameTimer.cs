@@ -21,11 +21,14 @@ public class GameTimer : MonoBehaviour
 
     private void EndTimer()
     {
+        complete = true;
         timeLeft = 0;
         timerTextField.text = text + "0";
         StopAllCoroutines();
         FindObjectOfType<Timer>().EndTime();
         ScoreManager.Instance.EndGame();
+        // Hämta namn på 
+        GameObject.Find("OpacityBackground").SetActive(true);
     }
 
     private void Update()
