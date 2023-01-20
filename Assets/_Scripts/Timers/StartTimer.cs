@@ -48,6 +48,13 @@ public class StartTimer : MonoBehaviour
                 yield return new WaitForSeconds(0.8f);
                 timerTextField.enabled = false;
 
+                Player[] allCrosshairs = FindObjectsOfType<Player>();
+
+                foreach (Player player in allCrosshairs)
+                {
+                    player.enabled = true;
+                }
+
                 gameTimer.InitTimer();
                 randomTimer.InitTimer();
 

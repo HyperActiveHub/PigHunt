@@ -51,6 +51,8 @@ public class Player : MonoBehaviour
 		Id = GetComponent<PlayerInput>().playerIndex;
 
 		Ammo = AmmoCount;
+
+		enabled = false;
 	}
 
     private void Update()
@@ -172,7 +174,6 @@ public class Player : MonoBehaviour
 
     public void SwapPosition(Vector3 playerToSwapTo)
     {
-        Vector3 oldPos = transform.position;
         transform.position = playerToSwapTo;
     }
 
