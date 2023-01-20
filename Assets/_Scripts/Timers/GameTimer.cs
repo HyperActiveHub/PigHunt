@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameTimer : MonoBehaviour
 {
     public int startTime = 200;
-    private int timeLeft;
+    private int timeLeft = 200;
     public TextMeshProUGUI timerTextField;
     public string text = "Time left: ";
 
@@ -22,6 +22,7 @@ public class GameTimer : MonoBehaviour
         timeLeft = 0;
         timerTextField.text = text + "0";
         StopAllCoroutines();
+        ScoreManager.Instance.EndGame();
     }
 
     private void Update()

@@ -29,6 +29,7 @@ public class ScoreManager : MonoBehaviour
     public int maxPlayers = 4;
 
     private int[] playerScores;
+    private float[] lastTimePlayerHitTarget;
 
     public GameObject textFieldPlayerOne;
     public GameObject textFieldPlayerTwo;
@@ -44,6 +45,9 @@ public class ScoreManager : MonoBehaviour
     PlayerInputManager playerInpMgr;
     public TextMeshProUGUI waitingText;
     private bool waitingForPlayers = true;
+
+    private int winnerID = -1;
+    public GameObject winningCanvas;
 
     private void Awake()
 	{
@@ -63,11 +67,14 @@ public class ScoreManager : MonoBehaviour
 		//In end screen, hide all other players' crosshairs, only show winner so they can move around and see it's them. 
 		//Also display winning text: "Player X wins!"
         playerScores = new int[maxPlayers];
+        lastTimePlayerHitTarget = new float[4] { Time.time, Time.time, Time.time, Time.time };
 
         activeTargets = new string[maxPlayers];
         playerInfo = new GameObject[4] { textFieldPlayerOne, textFieldPlayerTwo, textFieldPlayerThree, textFieldPlayerFour };
 
         playerInpMgr = FindObjectOfType<PlayerInputManager>();
+
+        winningCanvas.SetActive(false);
 
         // Deactivate not used players
         for (int i = GetConnectedPlayers(); i < maxPlayers; i++)
@@ -133,7 +140,9 @@ public class ScoreManager : MonoBehaviour
 		if(CheckIfRightTarget(targetName))
 		{
 			playerScores[playerID] += 10;
-		}
+            lastTimePlayerHitTarget[playerID] = Time.time;
+
+        }
 		else
 			playerScores[playerID] -= 8;
 
@@ -142,12 +151,59 @@ public class ScoreManager : MonoBehaviour
 
     private bool CheckIfRightTarget(string targetName)
     {
+        if (targetName == null) return false;
+
         foreach (string targetType in GetAllSpriteNames())
         {
             if (targetName.Contains(targetType)) return true;
         }
 
         return false;
+    }
+
+    public void EndGame()
+    {
+        SetWinner();
+        winningCanvas.SetActive(true);
+        winningCanvas.GetComponentInChildren<TextMeshProUGUI>().text = "Player " + (winnerID + 1) + " wins!!"; 
+    }
+
+    private void SetWinner()
+    {
+        int highestScoreIndex = 0;
+        int highestScore = 0;
+
+        int secondHighestScoreIndex = 0;
+        int secondHighestScore = 0;
+        for (int i = 0; i < playerScores.Length; i++)
+        {
+            int score = playerScores[i];
+            if (score > highestScore)
+            {
+                secondHighestScoreIndex = highestScoreIndex;
+                secondHighestScore = highestScore;
+
+                highestScoreIndex = i;
+                highestScore = score;
+            }
+        }
+
+        if (highestScore == secondHighestScore)
+        {
+            float timeSienceLastHitP1 = lastTimePlayerHitTarget[highestScoreIndex];
+            float timeSienceLastHitP2 = lastTimePlayerHitTarget[secondHighestScoreIndex];
+
+            if (timeSienceLastHitP1 < timeSienceLastHitP2)
+            {
+                winnerID = highestScoreIndex;
+            } else
+            {
+                winnerID = secondHighestScoreIndex;
+            }
+        } else
+        {
+            winnerID = highestScoreIndex;
+        }
     }
 
     private string[] GetAllSpriteNames()
