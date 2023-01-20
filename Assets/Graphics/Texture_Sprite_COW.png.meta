@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -103,7 +103,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: COW Body
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 0
+        width: 325
+        height: 385
+      alignment: 9
+      pivot: {x: 0.50000006, y: 0.079060666}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36082b3e8c63737429dde5966e03ad1b
+      internalID: 436316859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COW L Leg
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 158
+        width: 109
+        height: 155
+      alignment: 9
+      pivot: {x: 0.48684272, y: 0.13297483}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee377d4babb36e44d9b202b65d2c5f6a
+      internalID: 1522776056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COW R Leg
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 7
+        width: 109
+        height: 150
+      alignment: 9
+      pivot: {x: 0.51315784, y: 0.88563323}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88c64a950053c35478bc55caa22d8b6b
+      internalID: -109456983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COW L Arm
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 412
+        width: 147
+        height: 88
+      alignment: 9
+      pivot: {x: 0.17153858, y: 0.38048553}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cb6d7a263076db46b8d8bb9a68d08f0
+      internalID: -72680708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: COW R Arm
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 411
+        width: 151
+        height: 88
+      alignment: 9
+      pivot: {x: 0.800765, y: 0.39678296}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e477e746f76dc74aaef2f0048c3604f
+      internalID: -1199347168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -114,7 +219,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      COW R Arm: -1199347168
+      COW R Leg: -109456983
+      COW L Arm: -72680708
+      COW L Leg: 1522776056
+      COW Body: 436316859
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
