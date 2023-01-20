@@ -9,31 +9,54 @@ public class Timer : MonoBehaviour
 
     public int timeLeft = 10;
     public TextMeshProUGUI timerText;
-    private Player[] players;
+    private List<Player> players = new List<Player>();
+    private bool armed = true;
 
     // Use this for initialization    
     void Start()
     {
-        timeLeft = Random.Range(10, 20);
-        timerText.text = timeLeft.ToString();
+        InitTimer();
+    }
+
+    public void InitTimer()
+    {
+        timeLeft = Random.Range(25, 35);
+        timerText.text = "Randomize in: " + timeLeft.ToString();
         StartCoroutine(LoseTime());
-        players = FindObjectsOfType<Player>();
+        players.AddRange(FindObjectsOfType<Player>());
+        armed = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timeLeft <= 0)
+        if (timeLeft <= 0 && armed)
         {
-            StopCoroutine(LoseTime());
-            timerText.text = "Time's up!";
-            foreach (Player p in players)
-            {
-                Player randomPlayer = players[Random.Range(0, players.Length - 1)];
+            armed = false;
+            StopAllCoroutines();
+            //timerText.text = "Time's up!";
 
-                p.SwapPosition(randomPlayer);
+            players.Clear();
+            players.AddRange(FindObjectsOfType<Player>());
+
+
+            Vector3 firstPlayer = players[0].transform.position;
+
+            for (int i = 0; i < players.Count; i++) 
+            {
+                if (i == players.Count - 1)
+                {
+                    players[i].SwapPosition(firstPlayer);
+                } else
+                {
+                    players[i].SwapPosition(players[i + 1].transform.position);
+                }
+
             }
 
+            ScoreManager.Instance.SetRandomSprites();
+
+            InitTimer();
         }
     }
 
@@ -41,9 +64,26 @@ public class Timer : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1);
+            
+
+            if (Random.Range(0f, 1f) < 0.1)
+            {
+                yield return new WaitForSeconds(0.5f);
+            } else
+            {
+                yield return new WaitForSeconds(1);
+            }
+
+            if (timeLeft <= 3 && Random.Range(0f, 1f) < 0.3f)
+            {
+                timeLeft = 0;
+                timerText.text = "Randomize in: 0";
+                StopAllCoroutines();
+            }
+
+
             timeLeft--;
-            timerText.text = timeLeft.ToString();
+            timerText.text = "Randomize in: " + timeLeft;
         }
     }
 }
