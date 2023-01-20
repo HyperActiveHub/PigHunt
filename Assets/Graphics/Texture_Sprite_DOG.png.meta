@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -103,7 +103,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: DOG Body
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 8
+        width: 323
+        height: 384
+      alignment: 9
+      pivot: {x: 0.49868757, y: 0.06725732}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3db3260292ce5b4e922a6b2d3953656
+      internalID: -1299210929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DOG L Arm
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 416
+        width: 164
+        height: 92
+      alignment: 9
+      pivot: {x: 0.87221473, y: 0.5046078}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f5e3c9428fc8144490eebdefda70e7d
+      internalID: -1817773607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DOG R Arm
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 416
+        width: 159
+        height: 93
+      alignment: 9
+      pivot: {x: 0.12407852, y: 0.49544206}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62d376e88ab59884786e78661453c16b
+      internalID: -915135820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DOG Tail
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 321
+        width: 105
+        height: 187
+      alignment: 9
+      pivot: {x: 0.5565215, y: 0.7538935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a33e4bd102277c944a082515c20486dd
+      internalID: -570083174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DOG L Leg
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 159
+        width: 114
+        height: 153
+      alignment: 9
+      pivot: {x: 0.52231103, y: 0.11210742}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2abc7b75b0beed947836cb8e6938e10e
+      internalID: -1370808412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dog R Leg
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 6
+        width: 113
+        height: 149
+      alignment: 9
+      pivot: {x: 0.52625996, y: 0.8926158}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8552553c638a8d64485e8d5829a5e210
+      internalID: -783447464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -114,7 +240,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      DOG Body: -1299210929
+      DOG L Arm: -1817773607
+      DOG R Arm: -915135820
+      DOG Tail: -570083174
+      Dog R Leg: -783447464
+      DOG L Leg: -1370808412
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
