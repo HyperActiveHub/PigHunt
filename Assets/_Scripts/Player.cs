@@ -19,6 +19,9 @@ public class Player : MonoBehaviour
 	[SerializeField, Min(1)] public float ReloadSpeed = 5;
 	[SerializeField] GameObject indicatorUIPrefab;
 	[SerializeField] GameObject indicatorCanvasPrefab;
+	[SerializeField] AudioClip shotAudio;
+	[SerializeField] AudioClip reloadAudio;
+	[SerializeField] AudioClip blankAudio;
 
 	[HideInInspector]
 	public int Ammo;
@@ -26,6 +29,8 @@ public class Player : MonoBehaviour
 	public float FireRateTimer = 0;
 	[HideInInspector]
 	public float ReloadTimer = 0;
+	[HideInInspector]
+	public bool IsReloading;
 
 	private float leftBound = -8.5f;
     private float rightBound = 8.5f;
@@ -33,7 +38,7 @@ public class Player : MonoBehaviour
     private float lowerBound = -4.5f;
     private float nudgeDistance = 0.01f;
 
-	public bool IsReloading;
+	AudioSource audio;
 
 	private void Awake()
 	{
@@ -49,6 +54,7 @@ public class Player : MonoBehaviour
         RandomizePosition();
 
 		Id = GetComponent<PlayerInput>().playerIndex;
+		audio = GetComponent<AudioSource>();
 
 		Ammo = AmmoCount;
 
@@ -67,9 +73,16 @@ public class Player : MonoBehaviour
 		} else
         {
 			IsReloading = false;
-        }
+			if(wasReloadingLastFrame)
+			{
+				print("Reload OneShot");
+				audio.PlayOneShot(reloadAudio);
+			}
+		}
+		wasReloadingLastFrame = IsReloading;
 
-			Vector2 pos = transform.position;
+
+		Vector2 pos = transform.position;
         float amountToMoveX = moveSpeed * Time.deltaTime * moveInput.x;
         float amountToMoveY = moveSpeed * Time.deltaTime * moveInput.y;
 
@@ -100,6 +113,9 @@ public class Player : MonoBehaviour
 		//Use a bullet, start reloading if bullets == 0
 		//Flicker crosshair
 		//Play shoot audio
+
+		audio.PlayOneShot(shotAudio);
+		print("Shoot OneShot");
 
 		Vector3 origin = transform.position;
 		origin.z = -10;
@@ -136,11 +152,9 @@ public class Player : MonoBehaviour
         moveInput = inputVal.Get<Vector2>();
         //Debug.Log(moveInput);
     }
-
+	bool wasReloadingLastFrame;
 	void OnFire()
-    {
-		Debug.Log("NOW");
-		
+    {		
 		if (IsReloading)
         {
 			if (FireRateTimer >= fireRate)
@@ -160,11 +174,10 @@ public class Player : MonoBehaviour
 					Ammo = AmmoCount;
 					ReloadTimer = 0;
 				}
-				//consume ammo, play empty "click" audio
-				//start "reloading" (enabling shooting) when ammo == 0
+				audio.PlayOneShot(blankAudio);
+				print("Blank OneShot");
 			}
         }
-		
 	}
 
     public void RandomizePosition()
