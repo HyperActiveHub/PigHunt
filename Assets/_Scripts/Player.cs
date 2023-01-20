@@ -54,45 +54,19 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-		if(FireRateTimer < fireRate)
+		if (FireRateTimer < fireRate)
 			FireRateTimer += Time.deltaTime;
 
-		if(ReloadTimer < ReloadSpeed)   //player can only shoot while "reloading"
+		if (ReloadTimer < ReloadSpeed)   //player can only shoot while "reloading"
 		{
 			ReloadTimer += Time.deltaTime;
 			IsReloading = true;
-			//print("Reloading.. (shooting activated)");
-			if(Input.GetKeyDown(KeyCode.Space)) //TODO: Use new input system
-			{
-				if(FireRateTimer >= fireRate)
-				{
-					FireRateTimer = 0;
-					Shoot();
-				}
-			}
-		}
-		else
-		{
+		} else
+        {
 			IsReloading = false;
-			if(Input.GetKeyDown(KeyCode.Space)) //TODO: Use new input system
-			{
-				if(FireRateTimer >= fireRate)
-				{
-					FireRateTimer = 0;
-					//print("Ammo: " + ammo);
-					Ammo--;
-					if(Ammo == 0)
-					{
-						Ammo = AmmoCount;
-						ReloadTimer = 0;
-					}
-					//consume ammo, play empty "click" audio
-					//start "reloading" (enabling shooting) when ammo == 0
-				}
-			}
-		}
+        }
 
-        Vector2 pos = transform.position;
+			Vector2 pos = transform.position;
         float amountToMoveX = moveSpeed * Time.deltaTime * moveInput.x;
         float amountToMoveY = moveSpeed * Time.deltaTime * moveInput.y;
 
@@ -157,6 +131,36 @@ public class Player : MonoBehaviour
         moveInput = inputVal.Get<Vector2>();
         //Debug.Log(moveInput);
     }
+
+	void OnFire()
+    {
+		Debug.Log("NOW");
+		
+		if (IsReloading)
+        {
+			if (FireRateTimer >= fireRate)
+			{
+				FireRateTimer = 0;
+				Shoot();
+			}
+        } else
+        {
+			if (FireRateTimer >= fireRate)
+			{
+				FireRateTimer = 0;
+				//print("Ammo: " + ammo);
+				Ammo--;
+				if (Ammo == 0)
+				{
+					Ammo = AmmoCount;
+					ReloadTimer = 0;
+				}
+				//consume ammo, play empty "click" audio
+				//start "reloading" (enabling shooting) when ammo == 0
+			}
+        }
+		
+	}
 
     public void RandomizePosition()
     {
