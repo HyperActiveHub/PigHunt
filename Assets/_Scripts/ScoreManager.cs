@@ -165,7 +165,9 @@ public class ScoreManager : MonoBehaviour
     {
         SetWinner();
         winningCanvas.SetActive(true);
-        winningCanvas.GetComponentInChildren<TextMeshProUGUI>().text = "Player " + (winnerID + 1) + " wins!!"; 
+        winningCanvas.GetComponentInChildren<TextMeshProUGUI>().text = "Player " + (winnerID + 1) + " wins!!";
+        Debug.Log("Winner ID" + winnerID);
+        HideAllCrosshairsExceptWinner();
     }
 
     private void SetWinner()
@@ -203,6 +205,19 @@ public class ScoreManager : MonoBehaviour
         } else
         {
             winnerID = highestScoreIndex;
+        }
+    }
+
+    private void HideAllCrosshairsExceptWinner()
+    {
+        Player[] allCrosshairs = FindObjectsOfType<Player>();
+        Debug.Log(allCrosshairs.Length);
+        for (int i = 0; i < allCrosshairs.Length; i++)
+        {
+            if (allCrosshairs[i].Id != winnerID)
+            {
+                allCrosshairs[i].gameObject.SetActive(false);
+            }
         }
     }
 

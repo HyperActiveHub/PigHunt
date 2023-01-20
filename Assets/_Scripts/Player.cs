@@ -48,6 +48,8 @@ public class Player : MonoBehaviour
     {
         RandomizePosition();
 
+		Id = GetComponent<PlayerInput>().playerIndex;
+
 		Ammo = AmmoCount;
 	}
 
