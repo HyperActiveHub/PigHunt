@@ -53,7 +53,17 @@ MonoBehaviour:
   - {fileID: 1447728103400596011, guid: fa61ed3b2b3fa8a4cacbb64843b6cb15, type: 3}
   - {fileID: 2370304132590528908, guid: ccd5c1abd4b6db24f8db94c371ba60a1, type: 3}
   layers:
-  - BackgroundLayer: {fileID: 0}
+  - BackgroundLayer: {fileID: 4090199360093478377, guid: 8f9fc2ae7afe6564297264c5f1d243f6, type: 3}
+    TargetSizeInLayer: 0.45
+  - BackgroundLayer: {fileID: 5719336049990787328, guid: 091ee4e04873f1b48b462267f9e586d0, type: 3}
     TargetSizeInLayer: 0.35
-  - BackgroundLayer: {fileID: 0}
+  - BackgroundLayer: {fileID: 2778322832911525114, guid: 367743362909efb4c97d5a3d34f4212c, type: 3}
+    TargetSizeInLayer: 0.3
+  - BackgroundLayer: {fileID: 5835335720164673575, guid: b4670c149b4e7584fa62b9d57a5140bf, type: 3}
     TargetSizeInLayer: 0.25
+  - BackgroundLayer: {fileID: 3883495237080427577, guid: ee52e6f371b0be943a91403326eb5472, type: 3}
+    TargetSizeInLayer: 0.23
+  - BackgroundLayer: {fileID: 2874492572793984740, guid: 7d088f7919823934b92ffe40cebdf7f4, type: 3}
+    TargetSizeInLayer: 0.17
+  - BackgroundLayer: {fileID: 7880007464236290135, guid: 68a1017e38228504fb29f98349b2cc0a, type: 3}
+    TargetSizeInLayer: 0.15
