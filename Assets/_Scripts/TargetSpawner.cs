@@ -56,6 +56,5 @@ public class TargetSpawner : MonoBehaviour
 		
 		//newTarget.transform.position = newPos;	//animation overrides it..
 		newTarget.transform.localScale = Vector3.one * backgroundLayer.TargetSizeInLayer;
-
 	}
 }
