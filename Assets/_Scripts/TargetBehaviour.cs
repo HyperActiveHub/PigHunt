@@ -19,7 +19,7 @@ public class TargetBehaviour : MonoBehaviour
 	private void Awake()
 	{
 		RenderParent = transform.GetChild(0).gameObject;
-		spriteName =  RenderParent.GetComponent<SpriteRenderer>().sprite.texture.name;
+		spriteName =  RenderParent.GetComponentInChildren<SpriteRenderer>().sprite.texture.name;	//make sure all part-sprites includes animal name
 	}
 
 	void Start()
@@ -56,12 +56,12 @@ public class TargetBehaviour : MonoBehaviour
 
 	public void TargetHit(Player player)
 	{
-		//ScoreManager.Instance.OnScore(player.Id, spriteName);
+		ScoreManager.Instance.OnScore(player.Id, spriteName);
 		//print($"Player <{player.name}> hit target [{name}]!");
 
 		Destroy(gameObject);
 		var go = Instantiate(deathParticlesPrefab, transform.position, Quaternion.identity);
-		go.GetComponent<ParticleSystemRenderer>().sortingOrder = RenderParent.GetComponent<SpriteRenderer>().sortingOrder;
+		go.GetComponent<ParticleSystemRenderer>().sortingOrder = RenderParent.GetComponentInChildren<SpriteRenderer>().sortingOrder;
 	}
 
 }

@@ -151,11 +151,13 @@ public class ScoreManager : MonoBehaviour
 
     private bool CheckIfRightTarget(string targetName)
     {
-        if (targetName == null) return false;
+        if (targetName == null) 
+			return false;
 
         foreach (string targetType in GetAllSpriteNames())
         {
-            if (targetName.Contains(targetType)) return true;
+            if (targetName.Contains(targetType)) 
+				return true;
         }
 
         return false;
@@ -165,7 +167,9 @@ public class ScoreManager : MonoBehaviour
     {
         SetWinner();
         winningCanvas.SetActive(true);
-        winningCanvas.GetComponentInChildren<TextMeshProUGUI>().text = "Player " + (winnerID + 1) + " wins!!"; 
+        winningCanvas.GetComponentInChildren<TextMeshProUGUI>().text = "Player " + (winnerID + 1) + " wins!!";
+        Debug.Log("Winner ID" + winnerID);
+        HideAllCrosshairsExceptWinner();
     }
 
     private void SetWinner()
@@ -206,6 +210,19 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    private void HideAllCrosshairsExceptWinner()
+    {
+        Player[] allCrosshairs = FindObjectsOfType<Player>();
+        Debug.Log(allCrosshairs.Length);
+        for (int i = 0; i < allCrosshairs.Length; i++)
+        {
+            if (allCrosshairs[i].Id != winnerID)
+            {
+                allCrosshairs[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
     private string[] GetAllSpriteNames()
     {
         string[] names = new string[targetSprites.Length];
@@ -213,7 +230,7 @@ public class ScoreManager : MonoBehaviour
 
         foreach (Sprite sprite in targetSprites)
         {
-            names[index] = sprite.name;
+            names[index++] = sprite.name;
         }
 
         return names;

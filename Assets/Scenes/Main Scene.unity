@@ -828,6 +828,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinningScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 8429221696125832452, guid: 90b5aadf3bcc2f2459144915c504d77e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9015267156791652441, guid: 90b5aadf3bcc2f2459144915c504d77e, type: 3}
       propertyPath: m_Pivot.x
       value: 0

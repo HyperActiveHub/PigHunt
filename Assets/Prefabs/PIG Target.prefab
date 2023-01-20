@@ -93,6 +93,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1447728103400596010}
+  - component: {fileID: 2159538274971301690}
+  - component: {fileID: 2758175517293506715}
+  - component: {fileID: 101116524016369107}
   m_Layer: 0
   m_Name: PIG Target
   m_TagString: Untagged
@@ -109,13 +112,65 @@ Transform:
   m_GameObject: {fileID: 1447728103400596011}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.51342374, y: 0.51342374, z: 0.51342374}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1447728104306358686}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2159538274971301690
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447728103400596011}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1b85628c92d66d240b8aded7ab485aac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &2758175517293506715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447728103400596011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5a45baf3e47ea4d943d8a9cb00b431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animSpeedMultiplierMin: 0.5
+  animSpeedMultiplierMax: 0.7
+  deathParticlesPrefab: {fileID: 430444528395119237, guid: 4901e6c94fe88174881bd742c7cad1bb, type: 3}
+  RenderParent: {fileID: 0}
+--- !u!70 &101116524016369107
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447728103400596011}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.57}
+  m_Size: {x: 4.88, y: 4.12}
+  m_Direction: 0
 --- !u!1 &1447728103587000434
 GameObject:
   m_ObjectHideFlags: 0
