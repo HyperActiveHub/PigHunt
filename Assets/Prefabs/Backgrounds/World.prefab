@@ -89183,7 +89183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b7d24a89da3924fa97f3c9a8e8da3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  switchAfterSeconds: 90
+  switchAfterSeconds: 20
 --- !u!1 &8924202280713482160
 GameObject:
   m_ObjectHideFlags: 0
