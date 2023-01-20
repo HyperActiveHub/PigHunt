@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
@@ -24,8 +25,8 @@ public class ScoreManager : MonoBehaviour
 	static ScoreManager instance;
 
 
-    public int numberOfPlayers = 4;
-    private int maxPlayers = 4;
+    public int connectedPlayers = 2;
+    public int maxPlayers = 4;
 
     private int[] playerScores;
 
@@ -40,7 +41,11 @@ public class ScoreManager : MonoBehaviour
 
     public string[] activeTargets;
 
-	private void Awake()
+    PlayerInputManager playerInpMgr;
+    public TextMeshProUGUI waitingText;
+    private bool waitingForPlayers = true;
+
+    private void Awake()
 	{
 		if(instance != null)
 			Destroy(gameObject);
@@ -57,13 +62,15 @@ public class ScoreManager : MonoBehaviour
 		//save Time.time of last time player shot their target.  
 		//In end screen, hide all other players' crosshairs, only show winner so they can move around and see it's them. 
 		//Also display winning text: "Player X wins!"
-        playerScores = new int[numberOfPlayers];
+        playerScores = new int[maxPlayers];
 
-        activeTargets = new string[numberOfPlayers];
+        activeTargets = new string[maxPlayers];
         playerInfo = new GameObject[4] { textFieldPlayerOne, textFieldPlayerTwo, textFieldPlayerThree, textFieldPlayerFour };
 
+        playerInpMgr = FindObjectOfType<PlayerInputManager>();
+
         // Deactivate not used players
-        for (int i = numberOfPlayers; i < maxPlayers; i++)
+        for (int i = GetConnectedPlayers(); i < maxPlayers; i++)
         {
             playerInfo[i].SetActive(false);
         }
@@ -73,9 +80,40 @@ public class ScoreManager : MonoBehaviour
         UpdateTextFields();
     }
 
+    void Update()
+    {
+        if (waitingForPlayers)
+        {
+            connectedPlayers = GetConnectedPlayers();
+
+            for (int i = 0; i < 4; i++)
+            {
+                if (i < connectedPlayers)
+                {
+                    playerInfo[i].SetActive(true);
+                } else
+                {
+                    playerInfo[i].SetActive(false);
+                }
+
+            
+            }
+
+            if (connectedPlayers < maxPlayers)
+            {
+                waitingText.text = "Waiting for " + (maxPlayers - connectedPlayers) + " players";
+            } else
+            {
+                waitingText.enabled = false;
+                waitingForPlayers = false;
+            }
+        }
+        
+    }
+
     void UpdateTargetImages()
     {
-        for (int i = 0; i < numberOfPlayers; i++)
+        for (int i = 0; i < maxPlayers; i++)
         {
             playerInfo[i].GetComponentInChildren<Image>().sprite = FindSpriteByName(activeTargets[i]);
         }
@@ -83,7 +121,7 @@ public class ScoreManager : MonoBehaviour
 
     void UpdateTextFields()
     {
-        for (int i = 0; i < numberOfPlayers; i++)
+        for (int i = 0; i < maxPlayers; i++)
         {
             playerInfo[i].GetComponentInChildren<TextMeshProUGUI>().text = "Player " + (i + 1) + ": " + playerScores[i];
         }
@@ -135,12 +173,17 @@ public class ScoreManager : MonoBehaviour
 
     public void SetRandomSprites()
     {
-        for (int i = 0; i < numberOfPlayers; i++)
+        for (int i = 0; i < maxPlayers; i++)
         {
             activeTargets[i] = targetSprites[Random.Range(0, targetSprites.Length)].name;
         }
 
         UpdateTargetImages();
+    }
+
+    private int GetConnectedPlayers()
+    {
+        return playerInpMgr.playerCount;
     }
 
 }
