@@ -460,8 +460,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5a45baf3e47ea4d943d8a9cb00b431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animSpeedMultiplierMin: 0.5
-  animSpeedMultiplierMax: 0.7
+  animSpeedMultiplierMin: 0.29
+  animSpeedMultiplierMax: 0.51
   deathParticlesPrefab: {fileID: 430444528395119237, guid: 4901e6c94fe88174881bd742c7cad1bb, type: 3}
   RenderParent: {fileID: 0}
 --- !u!70 &8052697552849557439
