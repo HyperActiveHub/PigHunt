@@ -18,7 +18,9 @@ public class GameTimer : MonoBehaviour
         timeLeft = startTime + Random.Range(1, 15);
         timerTextField.text = text + timeLeft.ToString();
         StartCoroutine(Timer());
-    }
+		SwitchWorld.StartedInFirstWorld();
+
+	}
 
     private void EndTimer()
     {
