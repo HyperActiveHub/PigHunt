@@ -25,7 +25,7 @@ public class ScoreManager : MonoBehaviour
 	static ScoreManager instance;
 
 
-    public int connectedPlayers = 2;
+    public int connectedPlayers = 1;
     public int maxPlayers = 4;
 
     private int[] playerScores;
