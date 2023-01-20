@@ -61,8 +61,8 @@ public class StartTimer : MonoBehaviour
                 StopAllCoroutines();
             }
 
-
-            timeLeft--;
+            if (timeLeft > 0)
+                timeLeft--;
             timerTextField.text = timeLeft.ToString();
         }
     }
