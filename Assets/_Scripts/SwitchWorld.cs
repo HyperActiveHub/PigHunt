@@ -15,11 +15,12 @@ public class SwitchWorld : MonoBehaviour
     {
 		if(Time.timeSinceLevelLoad > startTime + switchAfterSeconds)
 		{
-			GetComponent<Animator>().SetTrigger("Switch");
+			GetComponent<Animator>().SetBool("Switch", true);
+			enabled = false;
 		}
 		else if(startTime != float.MaxValue)
 		{
-			//print("Switching world in " + ((startTime + switchAfterSeconds) - Time.timeSinceLevelLoad).ToString("N") + " seconds.".ToString());
+			print("Switching world in " + ((startTime + switchAfterSeconds) - Time.timeSinceLevelLoad).ToString("N") + " seconds.".ToString());
 		}
         
     }
