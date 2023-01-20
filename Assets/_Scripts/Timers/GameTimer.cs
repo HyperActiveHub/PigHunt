@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameTimer : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class GameTimer : MonoBehaviour
         FindObjectOfType<Timer>().EndTime();
         ScoreManager.Instance.EndGame();
         // Hämta namn på 
-        GameObject.Find("OpacityBackground").SetActive(true);
+        GameObject.Find("OpacityBackground").GetComponent<Image>().enabled = true;
     }
 
     private void Update()

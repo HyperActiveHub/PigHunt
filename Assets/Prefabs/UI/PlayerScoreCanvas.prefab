@@ -388,7 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ed465b45c68cb4aa526d20d42b700b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTime: 20
+  startTime: 10
   timerTextField: {fileID: 6104005758985300701}
   text: 'Time left: '
 --- !u!1 &4088623285171327424

@@ -144,7 +144,7 @@ public class ScoreManager : MonoBehaviour
 
         }
 		else
-			playerScores[playerID] -= 8;
+			playerScores[playerID] -= 3;
 
         UpdateTextFields();
     }
@@ -154,9 +154,11 @@ public class ScoreManager : MonoBehaviour
         if (targetName == null) 
 			return false;
 
+
         foreach (string targetType in GetAllSpriteNames())
         {
-            if (targetName.Contains(targetType)) 
+            //Debug.Log("Self: " + targetName + "target type" + targetType);
+            if (targetType.Contains(targetName)) 
 				return true;
         }
 
