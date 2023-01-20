@@ -19,6 +19,13 @@ public class ShootIndicator : MonoBehaviour
 	void Update()
     {
 		transform.position = crosshair.position;
+
+		if(!player.gameObject.activeInHierarchy)
+		{
+			gameObject.SetActive(false);
+			return;
+		}
+
 		if(player.IsReloading)
 		{
 			image.fillAmount = player.ReloadTimer / player.ReloadSpeed;
