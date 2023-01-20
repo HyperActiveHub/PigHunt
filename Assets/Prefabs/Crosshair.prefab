@@ -138,7 +138,7 @@ MonoBehaviour:
   indicatorCanvasPrefab: {fileID: 6060353812740893896, guid: e9a627c8fbdda974aa00b84d4777336b, type: 3}
   shotAudio: {fileID: 8300000, guid: 5db712975964f574091e0f199ba7ba65, type: 3}
   reloadAudio: {fileID: 8300000, guid: 9d41d30025d17bf4485ad74ed761a76b, type: 3}
-  blankAudio: {fileID: 0}
+  blankAudio: {fileID: 8300000, guid: 9b8ccf54622520b418645d5d0a621841, type: 3}
   Ammo: 0
   FireRateTimer: 0
   ReloadTimer: 0
