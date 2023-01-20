@@ -10,6 +10,8 @@ public class GameTimer : MonoBehaviour
     public TextMeshProUGUI timerTextField;
     public string text = "Time left: ";
 
+    private bool complete = false;
+
     public void InitTimer()
     {
         timeLeft = startTime + Random.Range(1, 15);
@@ -28,7 +30,12 @@ public class GameTimer : MonoBehaviour
 
     private void Update()
     {
-        if (timeLeft == 0) EndTimer();
+        if (timeLeft == 0 && !complete)
+        {
+            EndTimer();
+
+            complete = true;
+        }
     }
 
     IEnumerator Timer()

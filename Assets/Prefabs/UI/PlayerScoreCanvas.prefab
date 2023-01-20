@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Time left: '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b961951a7c2bcdd4587ec3b4220151d5, type: 2}
-  m_sharedMaterial: {fileID: -5239237041891756414, guid: b961951a7c2bcdd4587ec3b4220151d5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5152a7240e5bfe646908911a478417dd, type: 2}
+  m_sharedMaterial: {fileID: 8520535485574160127, guid: 5152a7240e5bfe646908911a478417dd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -203,8 +203,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Randomize in: '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b961951a7c2bcdd4587ec3b4220151d5, type: 2}
-  m_sharedMaterial: {fileID: -5239237041891756414, guid: b961951a7c2bcdd4587ec3b4220151d5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5152a7240e5bfe646908911a478417dd, type: 2}
+  m_sharedMaterial: {fileID: 8520535485574160127, guid: 5152a7240e5bfe646908911a478417dd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -458,8 +458,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Waiting for players
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b961951a7c2bcdd4587ec3b4220151d5, type: 2}
-  m_sharedMaterial: {fileID: -5239237041891756414, guid: b961951a7c2bcdd4587ec3b4220151d5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5152a7240e5bfe646908911a478417dd, type: 2}
+  m_sharedMaterial: {fileID: 8520535485574160127, guid: 5152a7240e5bfe646908911a478417dd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
