@@ -146,7 +146,7 @@ public class ScoreManager : MonoBehaviour
 
     public void OnScore(int playerID, string targetName)
     {
-		if(CheckIfRightTarget(targetName))
+		if(CheckIfRightTarget(targetName, playerID))
 		{
 			playerScores[playerID] += 10;
             lastTimePlayerHitTarget[playerID] = Time.time;
@@ -158,17 +158,22 @@ public class ScoreManager : MonoBehaviour
         UpdateTextFields();
     }
 
-    private bool CheckIfRightTarget(string targetName)
+    private bool CheckIfRightTarget(string targetName, int id)
     {
+		print("Target Name: " + targetName);
         if (targetName == null) 
 			return false;
 
 
-        foreach (string targetType in GetAllSpriteNames())
+        //foreach (string targetType in GetAllSpriteNames())
         {
-            //Debug.Log("Self: " + targetName + "target type" + targetType);
-            if (targetType.Contains(targetName)) 
+			string assignedTarget = activeTargets[id];
+			//actual target does not switch when Randomize timer ends..
+            Debug.Log("Self: " + targetName + "target type: " + assignedTarget);
+            if (targetName.Contains(assignedTarget))
+			{
 				return true;
+			}
         }
 
         return false;
@@ -230,7 +235,9 @@ public class ScoreManager : MonoBehaviour
             if (allCrosshairs[i].Id != winnerID)
             {
                 allCrosshairs[i].enabled = false;
-            } else
+				allCrosshairs[i].GetComponent<Renderer>().enabled = false;
+
+			} else
             {
                 allCrosshairs[i].enabled = true;
             }
@@ -254,7 +261,8 @@ public class ScoreManager : MonoBehaviour
     {
         foreach (Sprite sprite in targetSprites)
         {
-            if (name == sprite.name) return sprite;
+            if (name == sprite.name) 
+				return sprite;
         }
         return null;
     }
@@ -263,7 +271,9 @@ public class ScoreManager : MonoBehaviour
     {
         for (int i = 0; i < maxPlayers; i++)
         {
+			print("old target: " + activeTargets[i]);
             activeTargets[i] = targetSprites[Random.Range(0, targetSprites.Length)].name;
+			print("new target: " + activeTargets[i]);
         }
 
         UpdateTargetImages();

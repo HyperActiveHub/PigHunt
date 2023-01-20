@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
 			IsReloading = false;
 			if(wasReloadingLastFrame)
 			{
-				print("Reload OneShot");
+				//print("Reload OneShot");
 				audio.PlayOneShot(reloadAudio);
 			}
 		}
@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
 		//Play shoot audio
 
 		audio.PlayOneShot(shotAudio);
-		print("Shoot OneShot");
+		//print("Shoot OneShot");
 
 		Vector3 origin = transform.position;
 		origin.z = -10;
@@ -175,7 +175,7 @@ public class Player : MonoBehaviour
 					ReloadTimer = 0;
 				}
 				audio.PlayOneShot(blankAudio);
-				print("Blank OneShot");
+				//print("Blank OneShot");
 			}
         }
 	}
