@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5610004860024729536}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.8578, y: -0.6995, z: 0}
-  m_LocalScale: {x: 0.26577353, y: 0.26577353, z: 0.26577353}
+  m_LocalScale: {x: 0.65241724, y: 0.65241724, z: 0.65241724}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4165ae24837696b438c60d98ee5984e4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7120fae85f237d74eb41f9e85d4f9e15, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -136,6 +136,9 @@ MonoBehaviour:
   ReloadSpeed: 5
   indicatorUIPrefab: {fileID: 3679786170632378224, guid: e41071452a98fc443b35835766516326, type: 3}
   indicatorCanvasPrefab: {fileID: 6060353812740893896, guid: e9a627c8fbdda974aa00b84d4777336b, type: 3}
+  shotAudio: {fileID: 0}
+  reloadAudio: {fileID: 0}
+  blankAudio: {fileID: 0}
   Ammo: 0
   FireRateTimer: 0
   ReloadTimer: 0
