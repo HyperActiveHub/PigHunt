@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -125,21 +126,23 @@ public class Player : MonoBehaviour
 		Vector3 origin = transform.position;
 		origin.z = -10;
 
-		//TODO: Use 2D physics..
-		
-		//3D physics!
-		//Maybe easier to just Raycast and check first hit?
-		RaycastHit[] hits = Physics.RaycastAll(origin, Vector3.forward, 20);
+		RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(origin.x, origin.y), Vector2.zero);
+		//RaycastHit[] hits = Physics.RaycastAll(origin, Vector3.forward);
 		if(hits.Length > 0)
 		{
-			foreach(var hit in hits)	//make sure hits is in correct order, front to back. 
+			//var orderedHits = hits.OrderBy(x => (x.collider.GetComponentInChildren<Renderer>().sortingOrder)).ThenBy(x => x.transform.position.z).Reverse();
+			//foreach(var hit in orderedHits)	//make sure hits is in correct order, front to back. 
+			foreach(var hit in hits)
 			{
-				if(hit.collider.CompareTag("Background"))   //Background elements block shots.
-				{
-					//Missed()
-					break;
-				}
-
+				//if(hit.collider.CompareTag("Background"))   //Background elements block shots... cant get it to work. 
+				//{
+				//	//Missed()
+				//	string order = "Order: ";
+				//	foreach(var h in orderedHits)
+				//		order += h.collider.name;
+				//	print(order);
+				//	break;
+				//}
 				hit.collider.GetComponent<TargetBehaviour>()?.TargetHit(this);
 			}
 		}

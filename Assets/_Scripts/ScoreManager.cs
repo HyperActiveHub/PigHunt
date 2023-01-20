@@ -24,7 +24,7 @@ public class ScoreManager : MonoBehaviour
 	static ScoreManager instance;
 
 
-    public int numberOfPlayers = 4;
+    public int numberOfPlayers = 4;	//Set from startMenu
     private int maxPlayers = 4;
 
     private int[] playerScores;

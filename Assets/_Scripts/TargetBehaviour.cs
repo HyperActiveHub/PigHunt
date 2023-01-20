@@ -56,7 +56,7 @@ public class TargetBehaviour : MonoBehaviour
 
 	public void TargetHit(Player player)
 	{
-		//ScoreManager.Instance.OnScore(player.id, spriteName);
+		//ScoreManager.Instance.OnScore(player.Id, spriteName);
 		//print($"Player <{player.name}> hit target [{name}]!");
 
 		Destroy(gameObject);
