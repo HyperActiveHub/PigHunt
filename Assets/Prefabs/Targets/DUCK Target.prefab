@@ -125,6 +125,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1880384870496920478}
+  - component: {fileID: -4887355406714358472}
+  - component: {fileID: 1193957971089129440}
+  - component: {fileID: 5942220835513500745}
   m_Layer: 0
   m_Name: DUCK Target
   m_TagString: Untagged
@@ -148,3 +151,55 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &-4887355406714358472
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7060696693982625373}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1b85628c92d66d240b8aded7ab485aac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &1193957971089129440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7060696693982625373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5a45baf3e47ea4d943d8a9cb00b431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animSpeedMultiplierMin: 0.5
+  animSpeedMultiplierMax: 0.7
+  deathParticlesPrefab: {fileID: 430444528395119237, guid: 4901e6c94fe88174881bd742c7cad1bb, type: 3}
+  RenderParent: {fileID: 0}
+--- !u!58 &5942220835513500745
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7060696693982625373}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.54}
+  serializedVersion: 2
+  m_Radius: 2.27
